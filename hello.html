@@ -23,11 +23,35 @@
     <a href="http://www.apple.com">Clicking this paragraph should display an alert and prevent the browser from navigating away from this page.</a>
 
     <script>
-      var h1 = document.getElementsByTagName("h1")[0];
-      h1.onclick = function() {
-        ul = document.getElementsByTagName("ul")[0];
-        ul.style.display = "none";
+      $("a").on("click", function(eventObject) {
+        alert("Stop sending your money to Apple!");
+        eventObject.preventDefault();
+      });
+
+      function hideTheList() {
+        $("ul").fadeToggle();
       }
+      $("h1").on("click", hideTheList );
+
+      $("li").on("click", function(e) {
+        $(e.target).css("color", "red")
+      });
+
+      $("#add_item").on("click", function() {
+        $("ul").append("<li>Howdy!</li>");
+      });
+
+      // var h1 = document.getElementsByTagName("h1")[0];
+      // h1.onclick = function() {
+      //   ul = document.getElementsByTagName("ul")[0];
+
+      //   if (ul.style.display === "none") {
+      //     ul.style.display = "block";
+      //   }
+      //   else {
+      //     ul.style.display = "none";
+      //   }
+      // }
     </script>
 
 
